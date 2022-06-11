@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class cube : shape
 {
+    public TextMeshProUGUI mouseTracker;
     public override string Name { get { return "cube"; } set { } }
     public Material Original { get; set; }
     public Material changed;
@@ -22,11 +24,13 @@ public class cube : shape
 
     private void OnMouseEnter()
     {
+        mouseTracker.text = "mouse over " + gameObject.name;
         gameObject.GetComponent<MeshRenderer>().material = changed;
     }
 
     private void OnMouseExit()
     {
+        mouseTracker.text = "mouse over none";
         gameObject.GetComponent<MeshRenderer>().material = Original;
     }
 }
