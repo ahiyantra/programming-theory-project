@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class cube : shape
+public class cube : shape // INHERITANCE
 {
     public TextMeshProUGUI mouseTracker;
-    public override string Name { get { return "cube"; } set { } }
-    public Material Original { get; set; }
+    public override string Name { get { return "cube"; } set { } } // POLYMORPHISM
+    public Material Original { get; set; } // ENCAPSULATION
     public Material changed;
 
     // Start is called before the first frame update
     void Start()
     {
-        Original = gameObject.GetComponent<MeshRenderer>().material;
+        Assigner(); // ABSTRACTION
     }
 
     // Update is called once per frame
@@ -32,5 +32,10 @@ public class cube : shape
     {
         mouseTracker.text = "mouse over none";
         gameObject.GetComponent<MeshRenderer>().material = Original;
+    }
+
+    public void Assigner()
+    {
+        Original = gameObject.GetComponent<MeshRenderer>().material;
     }
 }
